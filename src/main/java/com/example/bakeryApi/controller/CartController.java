@@ -1,8 +1,6 @@
 package com.example.bakeryApi.controller;
 
 import com.example.bakeryApi.Cart;
-import com.example.bakeryApi.Product;
-import com.example.bakeryApi.repository.CartRepository;
 import com.example.bakeryApi.service.CartService;
 import com.example.bakeryApi.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,13 +24,6 @@ public class CartController {
     public ResponseEntity<Optional<Cart>> getCart(@PathVariable("userId") String userId) {
         return new ResponseEntity<>(cartService.getCart(userId), HttpStatus.OK);
     }
-
-//    @PostMapping("/updateCart/{userId}/{productId}/{quantity}")
-//    public void updateCart(@PathVariable("userId") String userId,
-//                           @PathVariable("productId") String productId,
-//                           @PathVariable("quantity") int quantity) {
-//        cartService.updateCart(userId, productId, quantity);
-//    }
 
     @PostMapping("/updateCart")
     public ResponseEntity<Cart> updateCart(@RequestBody Map<String, String> payload) {

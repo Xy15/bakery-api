@@ -1,24 +1,14 @@
 package com.example.bakeryApi.service;
 
 import com.example.bakeryApi.Cart;
-import com.example.bakeryApi.CartItem;
-import com.example.bakeryApi.Product;
 import com.example.bakeryApi.repository.CartRepository;
 import org.bson.types.ObjectId;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.List;
 import java.util.Optional;
-//import java.util.logging.Logger;
 import org.slf4j.Logger;
 
 @Service
@@ -28,29 +18,26 @@ public class CartService {
     private CartRepository cartRepository;
     @Autowired
     private MongoTemplate mongoTemplate;
-    @Autowired
-    private ProductService productService;
+
     private static final Logger logger = LoggerFactory.getLogger(CartService.class);
 
-    public Optional<Cart> getCart(String id){    //Optional means it might returns null
-        ObjectId userId = new ObjectId(id);
-        return cartRepository.findCartByUserId(userId);
+    public Optional<Cart> getCart(String userId){
+        ObjectId userObjId = new ObjectId(userId);
+        return cartRepository.findCartByUserId(userObjId);
     }
 
     public Cart updateCart(String userId, String productId, int quantity){
-            ObjectId userObjId = new ObjectId(userId);
-            Optional<Cart> cartOptional = cartRepository.findCartByUserId(userObjId);
+        ObjectId userObjId = new ObjectId(userId);
+        Optional<Cart> cartOptional = cartRepository.findCartByUserId(userObjId);
+        if (cartOptional.isPresent()) {
+            Cart cart = cartOptional.get();
+            cart.updateCart(productId, quantity);
 
-            if (cartOptional.isPresent()) {
-                Cart cart = cartOptional.get();
-                ObjectId productObjId = new ObjectId(productId);
-                cart.updateCart(productObjId, quantity);
-
-                return cartRepository.save(cart);
-            } else {
-                // when user's cart is not found
-                return null;
-            }
+            return cartRepository.save(cart);
+        } else {
+            // when user's cart is not found
+            return null;
+        }
     }
 }
 //        Query query = new Query();

@@ -7,9 +7,9 @@ import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "users") //this class represents each document in the collection
-@Data //getter & setter &  2 string methods
-@AllArgsConstructor //create a constructor that take all these fields as arguments
+@Document(collection = "users")
+@Data
+@AllArgsConstructor
 @NoArgsConstructor
 public class User {
     @Id

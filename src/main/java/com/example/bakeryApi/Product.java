@@ -13,13 +13,11 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @NoArgsConstructor  //create an empty constructor that take no parameters
 public class Product {
     @Id
-    private String id;
+    private ObjectId id;
     private String prodName;
     private String description;
     private String category;
     private String price;
     private String image;
-
-
 
 }
