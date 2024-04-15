@@ -1,9 +1,8 @@
 # Java Spring Boot Application with MongoDB
 
 **Prerequisites**
-Before running the application, ensure you have the following installed:
 Java Development Kit (JDK) 17 or later
-MongoDB Compass for database management
+MongoDB Compass
 IntelliJ IDEA or any preferred Java IDE
 
 **Setup MongoDB**
