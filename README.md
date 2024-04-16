@@ -1,9 +1,11 @@
+16/4 - Still working on it...
+
 # Java Spring Boot Application with MongoDB
 
 **Prerequisites**
-Java Development Kit (JDK) 17 or later
-MongoDB Compass
-IntelliJ IDEA or any preferred Java IDE
+- Java Development Kit (JDK) 17 or later
+- MongoDB Compass
+- IntelliJ IDEA or any preferred Java IDE
 
 **Setup MongoDB**
 1. Create a New Project in MongoDB Atlas: https://www.mongodb.com/cloud/atlas.
