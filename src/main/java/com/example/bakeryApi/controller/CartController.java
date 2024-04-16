@@ -14,11 +14,8 @@ import java.util.Optional;
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
 public class CartController {
-
     @Autowired
     private CartService cartService;
-    @Autowired
-    private ProductService productService;
 
     @GetMapping("/getCart/{userId}")
     public ResponseEntity<Optional<Cart>> getCart(@PathVariable("userId") String userId) {

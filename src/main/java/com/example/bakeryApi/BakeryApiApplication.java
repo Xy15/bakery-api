@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.bind.annotation.RestController;
 
-@SpringBootApplication//(exclude = {DataSourceAutoConfiguration.class})//, XADataSourceAutoConfiguration.class})
+@SpringBootApplication
 @ComponentScan(basePackages = {"com.example.bakeryApi"})
 @RestController
 public class BakeryApiApplication {
