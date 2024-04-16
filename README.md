@@ -11,4 +11,5 @@ IntelliJ IDEA or any preferred Java IDE
 3. Under the Security section, configure network access to allow your IP address to connect the cluster or use 0.0.0.0/0 to allow access from all IP addresses.
 4. Configure MongoDB Compass to connect to your cluster using connection string.
 5. Open project directory using Intellij IDEA
-6. Run BakeryApiApplication
+6. Add .env file under src/main/resources, specifying environment variables as outlined in .env.example
+7. Run BakeryApiApplication
