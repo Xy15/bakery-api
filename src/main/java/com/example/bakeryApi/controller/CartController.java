@@ -22,9 +22,13 @@ public class CartController {
         return new ResponseEntity<>(cartService.getCart(userId), HttpStatus.OK);
     }
 
-    @PostMapping("/updateCart")
+    @PatchMapping("/updateCart")
     public ResponseEntity<Cart> updateCart(@RequestBody Map<String, String> payload) {
         return new ResponseEntity<>(cartService.updateCart(payload.get("userId"), payload.get("productId"), Integer.parseInt(payload.get("quantity"))), HttpStatus.OK);
     }
 
+    @PostMapping("/addToCart")
+    public ResponseEntity<Cart> addToCart(@RequestBody Map<String, String> payload) {
+        return new ResponseEntity<>(cartService.addToCart(payload.get("userId"), payload.get("productId"), Integer.parseInt(payload.get("quantity"))), HttpStatus.OK);
+    }
 }

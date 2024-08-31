@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.util.List;
 
@@ -16,17 +17,20 @@ import java.util.List;
 public class Cart {
     @Id
     private ObjectId id;
-    private List<CartItem> products;
+
+    @Field(name = "products")
+    private List<CartItem> cartItems;
+
     private ObjectId userId;
 
     public void updateCart(String productId, int quantity) {
-        for (CartItem item : products) {
+        for (CartItem item : cartItems) {
             if (item.getProductId().equals(productId)) {
                 item.setQuantity(quantity);
                 return;
             }
         }
         CartItem newItem = new CartItem(productId, quantity);
-        products.add(newItem);
+        cartItems.add(newItem);
     }
 }
